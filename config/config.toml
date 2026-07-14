@@ -1,0 +1,75 @@
+nvidia_api_key = ""
+
+[app]
+log_level = "DEBUG"
+log_file = ""
+log_json = false
+
+[profile]
+active = "local"
+
+[profile.local]
+
+[profile.spaces]
+
+[pipeline]
+tier = "reliable"
+
+[thresholds]
+chunk_drift = 0.35
+injection_confidence_floor = 0.80
+intent_confidence_floor = 0.0
+retrieval_circuit_breaker = 0.0
+correction_loop_max_attempts = 3
+max_compression_tokens = 2048
+default_retrieval_k = 10
+max_tokenizer_length = 512
+rrf_constant = 60
+
+[models]
+chunking_embedding = "sentence-transformers/all-MiniLM-L6-v2"
+reranker = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+prompt_guard = "meta-llama/Llama-Prompt-Guard-2-86M"
+llama_guard = "meta-llama/Llama-Guard-3-1B"
+verification = "MoritzLaurer/DeBERTa-v3-base-mnli"
+intent_classifier = "sentence-transformers/all-MiniLM-L6-v2"
+coreference = "fastcoref"
+tokenizer_encoding = "cl100k_base"
+
+[safety]
+prompt_guard_enabled = false
+pii_enabled = false
+llama_guard_enabled = false
+pii_language = "en"
+
+[synthesis]
+base_url = "https://integrate.api.nvidia.com/v1"
+model = "meta/llama-3.1-8b-instruct"
+temperature = 0.0
+seed = 42
+max_tokens = 1024
+request_timeout = 60
+
+[memory]
+max_history = 10
+redis_url = "127.0.0.1:6379"
+redis_ttl = 3600
+default_tenant_id = "default"
+
+[paths]
+chroma_db_path = "data/chroma_db"
+data_dir = "data"
+golden_dataset_dir = "data/golden_dataset"
+eval_reports_dir = "data/golden_dataset/reports"
+ledger_db_path = "data/ingestion_ledger_chunks.db"
+local_models_dir = "local_models"
+chroma_collection_name = "rag_pipeline"
+chroma_index_space = "cosine"
+
+[tracing]
+langfuse_host = "https://cloud.langfuse.com"
+langfuse_public_key = ""
+langfuse_secret_key = ""
+opensmith_project = "rag-pipeline"
+opensmith_api_key = ""
+opensmith_base_url = "https://api.us.cloud.langfuse.com"
