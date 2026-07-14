@@ -1,5 +1,8 @@
 .PHONY: lint typecheck test eval redteam ingest dev clean
 
+download:
+	uv run python scripts/download_models.py
+
 install:
 	uv sync
 	uv pip install -e .
@@ -30,4 +33,4 @@ clean:
 	rm -rf data/golden_dataset/reports/*.json
 	find . -type d -name "__pycache__" -exec rm -rf {} + 2>/dev/null || true
 
-.PHONY: install lint typecheck test eval redteam ingest dev clean
+.PHONY: download install lint typecheck test eval redteam ingest dev clean

@@ -2917,6 +2917,7 @@ source = { editable = "." }
 dependencies = [
     { name = "chromadb" },
     { name = "gradio" },
+    { name = "huggingface-hub" },
     { name = "numpy" },
     { name = "presidio-analyzer" },
     { name = "presidio-anonymizer" },
@@ -2947,6 +2948,7 @@ dev = [
 requires-dist = [
     { name = "chromadb", specifier = ">=0.5.0" },
     { name = "gradio", specifier = ">=5.0" },
+    { name = "huggingface-hub", specifier = ">=0.20" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.0" },
     { name = "numpy", specifier = ">=1.24" },
     { name = "presidio-analyzer", specifier = ">=2.2" },
